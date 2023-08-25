@@ -1,6 +1,6 @@
 const routes = require("express").Router();
 
 
-routes.get("/",(req,res)=>{res.render("TelaInicial")})
+routes.get("/",(req,res)=>{res.render("TelaTasks")})
 
 module.exports = routes;

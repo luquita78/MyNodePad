@@ -9,16 +9,17 @@
 }
 
 
-/* body { */
-  /* background-color: #202024; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* color: #fff; */
-/* } */
+body {
+  background-color: #202024;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
 
 #card{
-    background-color: #202024;
+    background-color:#fff;
     top: 9rem;
+    
 }    
 
 nav p{
@@ -26,6 +27,7 @@ nav p{
     justify-content: center;
     margin-left: 30rem;
     font-size: 25px;
+    color: #fff;
 }
 button {
     padding: 0.6rem;
