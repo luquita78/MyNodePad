@@ -5,6 +5,6 @@ const {TelaInicial} = require("../controllers/telaInicial")
 
 
 routes.get("/",TelaInicial);
-routes.post("/novaLista/:nome",(req,res)=>{res.render("TelaTasks",()=>res.send(req.params.nome))})
+routes.post("/novaLista/:nome",(req,res)=>{res.render("TelaTasks",()=>res.send(req.params))})
 
 module.exports = routes;
