@@ -1,9 +1,11 @@
 const express = require("express");
 const path = require("path");
 const routes = require("./routes/index");
+const connectionDb = require("./database/db")
 
 const app = express();
 const port = 8080;
+connectionDb();
 
 app.use(express.urlencoded({extended:true}));
 
