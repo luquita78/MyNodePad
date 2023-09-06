@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const password = encodeURIComponent("#P4percut45");
+require("dotenv").config();
 const connectionDb = () =>{
     mongoose.connect(
-        `mongodb+srv://root:*P4percut45@cluster0.uterh.mongodb.net/?retryWrites=true&w=majority`,{
+        process.env.BD_URI,{
             useNewUrlParser: true,useUnifiedTopology: true,
         }
         )
