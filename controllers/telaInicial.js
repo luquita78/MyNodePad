@@ -1,12 +1,28 @@
+const ListaSchema = require("../models/Task");
+
 const TelaInicial = (req,res)=>
 {
     res.render("TelaInicial");
 };
 
-const NovaLista = (req,res)=>{
-    const novaLista = req.body.nomeLista;
 
-    res.redirect(`/${novaLista}`);
+
+const NovaLista = async (req,res)=>{
+    const novaListaNome = req.body.nomeLista;
+
+    try{
+        const novaLista = new ListaSchema({
+            nome: novaListaNome,
+            itens: []
+        });
+        await novaLista.save();
+
+        res.redirect(`/${novaListaNome}`);
+    }catch(err){
+        res.status(500).send({ error: err.message });
+    }
+
+    
 }
 
 const LancaNovaLista = (req,res)=>{
