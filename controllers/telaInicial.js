@@ -26,7 +26,8 @@ const NovaLista = async (req,res)=>{
 }
 
 const LancaNovaLista = (req,res)=>{
-    res.render("TelaTasks");
+    const nomeLista = req.params.nomeLista;
+    res.render("TelaTasks",{nomeLista});
 }
 
 module.exports = {TelaInicial, NovaLista, LancaNovaLista};
