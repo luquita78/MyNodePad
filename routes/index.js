@@ -3,6 +3,7 @@ const {TelaInicial, NovaLista, LancaNovaLista} = require("../controllers/telaIni
 
 routes.get("/",TelaInicial);
 routes.post("/novaLista", NovaLista);
-routes.get('/:nomeLista',LancaNovaLista)
+routes.get('/:nomeLista',LancaNovaLista);
+routes.post('/createTask/:nomeLista');
 
 module.exports = routes;
