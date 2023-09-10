@@ -1,11 +1,4 @@
-const routes = require("express").Router();
-const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem} = require("../controllers/telaInicial")
-const ListaSchema = require("../models/Task")
-
-routes.get("/",TelaInicial);
-routes.post("/novaLista", NovaLista);
-routes.get('/:nomeLista',LancaNovaLista);
-routes.post('/createTask/:nomeLista',async (req, res) => {
+async (req, res) => {
     const nomeLista = req.params.nomeLista; // Obtenha o nome da lista a partir dos parâmetros da URL
     const novoItem = req.body.novoItem; // Supondo que o novo item seja enviado pelo corpo da requisição
   
@@ -20,13 +13,9 @@ routes.post('/createTask/:nomeLista',async (req, res) => {
       await lista.save(); // Salve a lista atualizada
   
       res.status(200).send({ message: 'Novo item adicionado com sucesso!' });
-      
     } catch (err) {
       console.error('Erro ao adicionar item à lista:', err);
       res.status(500).send({ error: 'Erro ao adicionar item à lista.' });
     }
-  }
+  };
   
-  );
-
-module.exports = routes;
