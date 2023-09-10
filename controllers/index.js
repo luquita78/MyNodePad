@@ -40,7 +40,7 @@ const LancaNovaLista = async (req,res)=>{
 
 const AdicionaItem = async (req, res) => {
     const nomeLista = req.params.nomeLista; // Obtendo o nome da lista a partir dos parâmetros da URL
-    const novoItem = req.body.novoItem; // Supondo que o novo item seja enviado pelo corpo da requisição
+    const novoItem = req.body.nomeItem; // Supondo que o novo item seja enviado pelo corpo da requisição
   
     try {
       const lista = await ListaSchema.findOne({ nome: nomeLista }); // Encontre a lista pelo nome
