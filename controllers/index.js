@@ -22,14 +22,24 @@ const NovaLista = async (req,res)=>{
 }
   
 
-const LancaNovaLista = (req,res)=>{
-    const nomeLista = req.params.nomeLista;
+const LancaNovaLista = async (req,res)=>{
+    const nomeLista = req.params.nomeLista;  //Obtendo o nome da lista a partir dos parâmetros da URL
+    
+    try {
+      const itensLista = await ListaSchema.findOne({nome: nomeLista});
+      const itens = itensLista.itens.map(item => item.valor)
+      if(itensLista){
+    console.log(itens)}
+    } catch (error) {
+      
+    }
+    
     res.render("TelaTasks",{nomeLista});
 }
 
 
 const AdicionaItem = async (req, res) => {
-    const nomeLista = req.params.nomeLista; // Obtenha o nome da lista a partir dos parâmetros da URL
+    const nomeLista = req.params.nomeLista; // Obtendo o nome da lista a partir dos parâmetros da URL
     const novoItem = req.body.novoItem; // Supondo que o novo item seja enviado pelo corpo da requisição
   
     try {
@@ -49,6 +59,10 @@ const AdicionaItem = async (req, res) => {
       res.status(500).send({ error: 'Erro ao adicionar item à lista.' });
     }
   }
+
+const GetItens = async (req,res)=>{
+  const nomeLista = req.params.nomeLista; //Obtendo o nome da lista a partir dos parâmetros da URL
+}
 
 module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem};
 

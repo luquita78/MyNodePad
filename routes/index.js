@@ -1,6 +1,5 @@
 const routes = require("express").Router();
-const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem} = require("../controllers/telaInicial")
-const ListaSchema = require("../models/Task")
+const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem} = require("../controllers/index")
 
 routes.get("/",TelaInicial);
 routes.post("/novaLista", NovaLista);
