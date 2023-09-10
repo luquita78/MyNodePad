@@ -27,25 +27,24 @@ const AdicionaItem = async(req,res)=>{
     const nomeLista = req.params.nomeLista;
     const nomeItem = req.body.nomeItem;
 
-    ListaSchema.findOne({nome:nomeLista}, (err,lista)=>{
-        if(err){
-            return res.status(500).send({error:'Erro ao encontrar Lista!'})
-        };
-        if(!lista){
-            return res.status(404).send({error: 'Lista não encontrada!'})
-        };
-
-        //Adicionando novo item na lista 
-        lista.itens.push(nomeItem);
-
-        //salvando item
-        lista.save((err,listaAtualizada)=>{
-            if(err){
-              return  res.status(500).send({error: 'Erro ao salvar Lista!'});
+    ListaSchema.findOne({nome:nomeLista})
+        .then(lista =>{
+            if(!lista){
+                return res.status(404).send({error: 'Lista não encontrada!'});
             }
-            return res.status(200).send({message: 'Novo item adicionado!'});
-        })
-    })
+              //Adicionando novo item na lista 
+            lista.itens.push(nomeItem);
+             //salvando item
+            lista.save().then(listaAtualizada =>{
+                return res.status(200).send({message: 'Novo item adicionado!'});
+            }).catch(err=>{
+                return  res.status(500).send({error: 'Erro ao salvar Lista!'});
+            });
+            })
+        .catch(err =>{
+            return res.status(500).send({error:'Erro ao encontrar Lista!'})
+        });
+    
 }
 
 const LancaNovaLista = (req,res)=>{
