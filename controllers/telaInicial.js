@@ -5,8 +5,6 @@ const TelaInicial = (req,res)=>
     res.render("TelaInicial");
 };
 
-
-
 const NovaLista = async (req,res)=>{
     const novaListaNome = req.body.nomeLista;
 
@@ -22,6 +20,13 @@ const NovaLista = async (req,res)=>{
         res.status(500).send({ error: err.message });
     }
 }
+  
+
+const LancaNovaLista = (req,res)=>{
+    const nomeLista = req.params.nomeLista;
+    res.render("TelaTasks",{nomeLista});
+}
+
 
 const AdicionaItem = async (req, res) => {
     const nomeLista = req.params.nomeLista; // Obtenha o nome da lista a partir dos parâmetros da URL
@@ -44,12 +49,6 @@ const AdicionaItem = async (req, res) => {
       res.status(500).send({ error: 'Erro ao adicionar item à lista.' });
     }
   }
-  
-
-const LancaNovaLista = (req,res)=>{
-    const nomeLista = req.params.nomeLista;
-    res.render("TelaTasks",{nomeLista});
-}
 
 module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem};
 
