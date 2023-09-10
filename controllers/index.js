@@ -27,7 +27,7 @@ const LancaNovaLista = async (req,res)=>{
     
     try {
       const itensLista = await ListaSchema.findOne({nome: nomeLista});
-      const itens = await itensLista.itens.map(item => item.valor)
+      const itens = itensLista.itens.map(item => item.valor)
       if(itensLista){
         res.render("TelaTasks",{nomeLista, itens});}
     } catch (error) {
@@ -52,7 +52,7 @@ const AdicionaItem = async (req, res) => {
       lista.itens.push({ valor: novoItem }); // Adicione o novo item à lista
       await lista.save(); // Salve a lista atualizada
   
-      res.status(200).send({ message: 'Novo item adicionado com sucesso!' });}
+      res.redirect(`/${nomeLista}`);}
       
     } catch (err) {
       console.error('Erro ao adicionar item à lista:', err);
