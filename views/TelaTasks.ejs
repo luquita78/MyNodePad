@@ -29,7 +29,16 @@
         </form>
       </div>
   </header>
-      <script src="/script.js"></script>
+  <section id="tasks">
+    <section id="tasks">
+      <ul>
+        <% itensLista.itens.forEach((item) =>{ %>
+          <li><%= item.valor%></li>
+        <% }); %>  
+      </ul>
+    </section>
+  
+  <script src="/script.js"></script>
 </body>
 
 </html>

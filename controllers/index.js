@@ -27,11 +27,18 @@ const LancaNovaLista = async (req,res)=>{
     
     try {
       const itensLista = await ListaSchema.findOne({nome: nomeLista});
-      const itens = itensLista.itens.map(item => item.valor)
-      if(itensLista){
-        res.render("TelaTasks",{nomeLista, itens});}
-    } catch (error) {
       
+      if(itensLista){
+        const itens = itensLista.itens.map(item => item.valor)
+        res.render("TelaTasks",
+        {
+          nomeLista,
+          itensLista, 
+          itens,
+        }
+          );}
+    } catch (error) {
+      res.status(500).send({ error: error.message });
     }
     
     
