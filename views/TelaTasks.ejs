@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/style_tasks.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+
   <title>Lista: <%= nomeLista %></title>
 </head>
 
@@ -33,7 +34,19 @@
     <section id="tasks">
       <ul>
         <% itensLista.itens.forEach((item) =>{ %>
-          <li><%= item.valor%></li>
+
+          <li>
+            <div>
+              <%= item.valor%>
+              <span>Criado em: <%= item.createdAt.toLocaleDateString('pt-br') %></span>
+            </div>
+            <div>
+              <a class="btnUpdate" href="#"><i class="bi bi-pencil-square"></i></a>
+              <a class="btnDelete" href="#"><i class="bi bi-trash-fill"></i></a>
+          </div>
+          </li>
+          
+
         <% }); %>  
       </ul>
     </section>
