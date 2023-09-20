@@ -67,10 +67,17 @@ const AdicionaItem = async (req, res) => {
     }
   }
 
-const GetItens = async (req,res)=>{
-  const nomeLista = req.params.nomeLista; //Obtendo o nome da lista a partir dos parâmetros da URL
+const GetItensById = async (req,res)=>{
+  try{
+
+    const itemListaId = await ListaSchema.findOne({_id: req.params.id});
+    const listaitens = await ListaSchema.find();
+
+  }catch(err){
+    res.status(500).send({error: err.message});
+  }  
 }
 
-module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem};
+module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,GetItensById};
 
 
