@@ -35,6 +35,7 @@ const LancaNovaLista = async (req,res)=>{
           nomeLista,
           itensLista, 
           itens,
+          item: null,
         }
           );}
     } catch (error) {
@@ -69,10 +70,9 @@ const AdicionaItem = async (req, res) => {
 
 const GetItensById = async (req,res)=>{
   try{
-
-    const itemListaId = await ListaSchema.findOne({_id: req.params.id});
-    const listaitens = await ListaSchema.find();
-
+    const itemId = await ListaSchema.findOne({_id: req.params.id})
+    const itens = await ListaSchema.find();
+    res.render("TelaTask",{itemId,itens})
   }catch(err){
     res.status(500).send({error: err.message});
   }  

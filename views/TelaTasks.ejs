@@ -18,6 +18,7 @@
   <header>
     <h1><%= nomeLista %></h1>
       <div class="formulario">
+        <% if(item == null) { %>
         <form action="/createTask/<%= nomeLista %>" method="post">
 
 
@@ -28,6 +29,18 @@
           <button type="submit" name="adicionar" id="adicionar" class="">Inserir item</button>
 
         </form>
+        <% } else {%>
+          <form action="/createTask/<%= nomeLista %>" method="post">
+
+
+          
+            <input type="text" name="nomeItem" id="tarefa" placeholder="Item">
+  
+  
+            <button type="submit" name="adicionar" id="adicionar" class="">Atualizar item</button>
+  
+          </form>
+          <% } %>
       </div>
   </header>
   <section id="tasks">
