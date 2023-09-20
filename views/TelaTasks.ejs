@@ -29,12 +29,12 @@
           <button type="submit" name="adicionar" id="adicionar" class="">Inserir item</button>
 
         </form>
-        <% } else {%>
-          <form action="/createTask/<%= nomeLista %>" method="post">
+        <% } else if (method === 'update') {%>
+          <form action="/update/<%= nomeLista %>/<%= item._id %>" method="post">
 
 
           
-            <input type="text" name="nomeItem" id="tarefa" placeholder="Item">
+            <input type="text" name="nomeItem" id="tarefa" value="itens.valor">
   
   
             <button type="submit" name="adicionar" id="adicionar" class="">Atualizar item</button>
@@ -54,9 +54,13 @@
               <span>Criado em: <%= item.createdAt.toLocaleDateString('pt-br') %></span>
             </div>
             <div>
-              <a class="btnUpdate" href="#"><i class="bi bi-pencil-square"></i></a>
-              <a class="btnDelete" href="#"><i class="bi bi-trash-fill"></i></a>
+              <a class="btnUpdate" href="/update/<%= nomeLista%>/<%= item._id%>"><i class="bi bi-pencil-square"></i></a>
+              <a class="btnDelete" href="/delete/<%= nomeLista%>/<%= item._id%>"><i class="bi bi-trash-fill"></i></a>
           </div>
+            <!-- Adiciona os campos hidden -->
+            <input type="hidden" name="lista" value="<%= nomeLista %>">
+            <input type="hidden" name="itemId" value="<%= item._id %>">
+            <input type="hidden" name="method" value="update">
           </li>
           
 
