@@ -90,6 +90,26 @@ const GetItensById = async (req,res) => {
      
 }
 
-module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,GetItensById};
+const UpdateOne = async (req,res) =>{
+  const nomeLista = req.params.nomeLista;
+  const itemId = req.params.itemId;
+  const itemAtualizado = req.body.itemAtual;
+
+  try {
+    const result = await ListaSchema.findOneAndUpdate(
+      {nome: nomeLista,'itens._id': itemId},
+      {$set:{'itens.$.valor':itemAtualizado}},
+      {new: true}
+      );
+    if(!result){
+      return res.status(404).send({ error: 'Item não encontrado.' })
+    }
+    res.redirect(`/${nomeLista}`);
+  } catch (err) {
+    res.status(500).send({error: err.message});
+  }
+}
+
+module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,GetItensById,UpdateOne};
 
 
