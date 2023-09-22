@@ -75,41 +75,28 @@ const AdicionaItem = async (req, res) => {
 //   }  
 // }
 
-const UpdateItem = async (req,res) => {
+const GetItensById = async (req,res) => {
   const nomeLista = req.params.nomeLista;
   const itemId = req.params.itemId;
-  const method = req.method;
+  
+  try {
+    const itensLista = await ListaSchema.findOne({nome: nomeLista});
+    const itens = itensLista.itens.map(item => item.valor);
+    
 
-  if(method === 'GET'){
-    //EXIBIR FORM DE ATUALIZACAO
-    try {
-      const itensLista = await ListaSchema.findOne({nome: nomeLista});
-      const item = await ListaSchema.findOne({_id: itemId});
-      res.render('TelaTasks',{itensLista,item, nomeLista, method})
-    } catch (err) {
-      res.status(500).send({ error: err.message });
+    if(req.params.method == "update"){
+      const item = itensLista.itens.find(item => item._id == itemId);
+      res.render("TelaTasks", {nomeLista,itens,item,itensLista})
+      console.log(item);
     }
-  } else if (method === 'POST') {
-    //ATUALIZAÇÃO
-    const itemAtualizado = req.body.nomeItem;
-    try {
-      const lista = await ListaSchema.findOne({nome: nomeLista});
-      if (!lista) return res.status(404).send({error: 'Lista não encontrada!'});
-      const item = lista.itens.id(itemId);
-      if (!item) {
-        return res.status(404).send({ error: 'Item não encontrado.' });
-      }
-
-      item.valor = itemAtualizado;
-      await lista.save();
-      res.redirect(`/${nomeLista}`)
-    } catch (err) {
-      console.error('Erro ao atualizar item:', err);
-      res.status(500).send({ error: 'Erro ao atualizar item.' });
-    }
+    
+  } catch (err) {
+    res.status(500).send({error: err.message});
   }
+
+     
 }
 
-module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,UpdateItem};
+module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,GetItensById};
 
 
