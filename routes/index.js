@@ -4,7 +4,7 @@ const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem, GetItensById} = requ
 routes.get("/",TelaInicial);
 routes.post("/novaLista", NovaLista);
 routes.get('/:nomeLista',LancaNovaLista);
-routes.get('/getByID/:nomeLista/:itemId/:method', GetItensById);
+routes.get('/:nomeLista/:itemId/:method', GetItensById);
 routes.post('/createTask/:nomeLista',AdicionaItem);
 
 
