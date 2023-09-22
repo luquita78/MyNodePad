@@ -68,12 +68,6 @@ const AdicionaItem = async (req, res) => {
     }
   }
 
-// const GetItensById = async (req,res)=>{
-//   try{
-//   }catch(err){
-//     res.status(500).send({error: err.message});
-//   }  
-// }
 
 const GetItensById = async (req,res) => {
   const nomeLista = req.params.nomeLista;
@@ -86,8 +80,7 @@ const GetItensById = async (req,res) => {
 
     if(req.params.method == "update"){
       const item = itensLista.itens.find(item => item._id == itemId);
-      res.render("TelaTasks", {nomeLista,itens,item,itensLista})
-      console.log(item);
+      res.render("TelaTasks", {nomeLista,itens,item,itensLista,})
     }
     
   } catch (err) {
