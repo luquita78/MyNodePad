@@ -29,12 +29,12 @@
           <button type="submit" name="adicionar" id="adicionar" class="">Inserir item</button>
 
         </form>
-        <% } else if (method === 'update') {%>
+        <% } else{%>
           <form action="/update/<%= nomeLista %>/<%= item._id %>" method="post">
 
 
           
-            <input type="text" name="nomeItem" id="tarefa" value="itens.valor">
+            <input type="text" name="nomeItem" id="tarefa" value="<%= item.valor %>">
   
   
             <button type="submit" name="adicionar" id="adicionar" class="">Atualizar item</button>
@@ -58,9 +58,9 @@
               <a class="btnDelete" href="/delete/<%= nomeLista%>/<%= item._id%>"><i class="bi bi-trash-fill"></i></a>
           </div>
             <!-- Adiciona os campos hidden -->
-            <input type="hidden" name="lista" value="<%= nomeLista %>">
-            <input type="hidden" name="itemId" value="<%= item._id %>">
-            <input type="hidden" name="method" value="update">
+            <!-- <input type="hidden" name="lista" value="<%= nomeLista %>"> -->
+            <!-- <input type="hidden" name="itemId" value="<%= item._id %>"> -->
+            
           </li>
           
 

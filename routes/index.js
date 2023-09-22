@@ -4,11 +4,9 @@ const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem, UpdateItem} = requir
 routes.get("/",TelaInicial);
 routes.post("/novaLista", NovaLista);
 routes.get('/:nomeLista',LancaNovaLista);
-//routes.get('/getByID/:nomeLista',GetItensById);
+routes.get('/getByID/:nomeLista/:itemId', GetItensById);
 routes.post('/createTask/:nomeLista',AdicionaItem);
 
-routes.get('/update/:nomeLista/:itemId', UpdateItem); // Rota para exibir formulário de atualização
-routes.post('/update/:nomeLista/:itemId', UpdateItem); // Rota para processar atualização
 
 
 
