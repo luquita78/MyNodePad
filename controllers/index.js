@@ -81,6 +81,8 @@ const GetItensById = async (req,res) => {
     if(req.params.method == "update"){
       const item = itensLista.itens.find(item => item._id == itemId);
       res.render("TelaTasks", {nomeLista,itens,item,itensLista,})
+    } else if (req.params.method == "delete"){
+       
     }
     
   } catch (err) {
