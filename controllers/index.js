@@ -95,7 +95,7 @@ const Atualizar = async (req,res) =>{
   const itemId = req.params.itemId;
   const itemAtualizado = req.body.itemAtual;
 
-  console.log(nomeLista,itemId,itemAtualizado);
+  
   try {
     const result = await ListaSchema.updateOne(
       {nome: nomeLista,'itens._id': itemId},
