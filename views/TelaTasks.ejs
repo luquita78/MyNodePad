@@ -63,7 +63,7 @@
             </div>
             <div>
               <a class="btnUpdate" href="/<%= nomeLista%>/<%= item._id%>/update"><i class="bi bi-pencil-square"></i></a>
-              <a class="btnDelete" href="/<%= nomeLista%>/<%= item._id%>/delete"><i class="bi bi-trash-fill"></i></a>
+              <a class="btnDelete" href="#"><i class="bi bi-trash-fill"></i></a>
           </div>
             <!-- Adiciona os campos hidden -->
             <!-- <input type="hidden" name="lista" value="<%= nomeLista %>"> -->
@@ -75,28 +75,7 @@
         <% }); %>  
       </ul>
     </section>
-  <% if(itemDelete != null){%>
-    <section id="modal">
-      <div id="card">
-  
-        <div id="header">
-  
-            <h2>Confirmação</h2>
-            <a id="fechar" href="/"><i class="bi bi-x-square"></i></a>  
-           
-        </div>
-        
-        <p>Deseja realmente apagar a tarefa: <%= item.valor %>?</p>
-        <div id="btns"> 
-          
-          <a id="btnYes" href="/<%= nomeLista %>/<%= item._id %>">Sim</a>
-          <a id="btnNo" href="/">Não</a>
-          
-        </div>
-        
-      </div>
-    </section>
-    <%}%>
+
   
 </body>
 

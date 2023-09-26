@@ -1,6 +1,6 @@
 const routes = require("express").Router();
 const {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem, GetItensById,Atualizar,DeletarItem} = require("../controllers/index");
-const { updateOne } = require("../models/Task");
+
 
 routes.get("/",TelaInicial);
 routes.get('/:nomeLista',LancaNovaLista);

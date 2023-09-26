@@ -82,9 +82,6 @@ const GetItensById = async (req,res) => {
     if(req.params.method == "update"){
       const item = itensLista.itens.find(item => item._id == itemId);
       res.render("TelaTasks", {nomeLista,itens,item,itensLista,itemDelete: null})
-    } else if (req.params.method == "delete"){
-      const itemDelete = itensLista.itens.find(item => item._id == itemId);
-      res.render("TelaTasks",{nomeLista,itens,item: null,itensLista, itemDelete})  
     }
     
   } catch (err) {
@@ -115,20 +112,6 @@ const Atualizar = async (req,res) =>{
 }
 
 const DeletarItem = async(req,res)=>{
-  const nomeLista = req.params.nomeLista;
-  const itemId = req.params.itemId;
-
-  try {
-    const result = await ListaSchema.updateOne(
-      {nome: nomeLista},
-      {$pull: {itens: {_id: itemId}}}
-    );
-    if(result.nModified === 0){  //nModified indica quantos documentos foram modificados 
-      return res.status(404).send({ error: 'Item não encontrado.' });
-    } else (res.redirect(`/${nomeLista}`));
-  } catch (error) {
-    res.status(500).send({error: err.message});
-  }
 }
 
 module.exports = {TelaInicial, NovaLista, LancaNovaLista,AdicionaItem,GetItensById,Atualizar,DeletarItem};
