@@ -117,7 +117,7 @@ const Atualizar = async (req,res) =>{
 const DeletarItem = async(req,res)=>{
   const nomeLista = req.params.nomeLista;
   const itemId = req.params.itemId;
-
+  console.log(nomeLista,itemId);
   try{
     const result = await ListaSchema.updateOne(
       {nome: nomeLista},
