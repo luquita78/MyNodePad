@@ -10,6 +10,7 @@ routes.get('/:nomeLista/:itemId/:method', GetItensById);
 routes.post("/novaLista", NovaLista);
 routes.post('/createTask/:nomeLista',AdicionaItem);
 routes.post('/update/:nomeLista/:itemId', Atualizar);
+routes.post('/delete/:nomeLista/:itemId', DeletarItem)
 
 
 
