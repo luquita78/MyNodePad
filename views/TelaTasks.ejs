@@ -69,7 +69,7 @@
         <% }); %>  
       </ul>
     </section>
-    <% if (taskDelete != null){%>
+    <% if (itemDelete != null){%>
     <section id="modal">
       <div id="card">
         <div id="header">
@@ -77,15 +77,15 @@
           <a href="/<%= nomeLista %>" id="fechar"><i class="bi bi-x-square"></i></a>
 
         </div>
-        <p>Deseja realmente apagar a tarefa: <%=itemDelete._id %>?</p>
+        <p>Deseja realmente apagar a tarefa: <%=itemDelete.valor %>?</p>
         <div class="btns">
           <a href="#" id="btnYes">Sim</a>
-          <a href="/<%= nomeLista %>" id="btnNo"></a>
+          <a href="/<%= nomeLista %>" id="btnNo">Não</a>
         </div>
       </div>
 
     </section>        
-  
+  <% } %>
 </body>
 
 </html>
